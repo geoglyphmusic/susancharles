@@ -7,6 +7,6 @@
     {% if post.image %}
       <img src="{{ post.image.url }}" alt="" width=400px>
     {% endif %}
-    <p>{{ post.content }}</p>
+    <p>{{ post.content|safe }}</p>
   {% endfor %}
 {% endblock content %}

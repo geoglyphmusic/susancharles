@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'active_link',
     'taggit',
+    'ckeditor',
     'home',
     'blog',
     'user',
