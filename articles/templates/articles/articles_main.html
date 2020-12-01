@@ -1,0 +1,20 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+  <div class="row pt-4">
+    <div class="col-sm-8 pb-4">
+      <h1 class="pb-4">Articles</h1>
+      {% for article in articles %}
+        <h3><a href="{% url 'article' article_slug=article.slug %}">{{ article.title }}</a></h3>
+        <p>{{ article.date_published }}</p>
+      {% endfor %}
+    </div>
+    <div class="col-sm-4">
+      <h3 class="pb-2">Articles About:</h3>
+      {% for tag in tags %}
+        <a class="btn btn-info" href="{% url 'tag' selected_tag=tag %}">{{ tag }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+{% endblock content %}

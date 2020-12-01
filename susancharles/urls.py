@@ -20,11 +20,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('ckeditor', include('ckeditor_uploader.urls')),
     path('', include('home.urls')),
-    path('blog/', include('blog.urls')),
+    path('articles/', include('articles.urls')),
     path('user/', include('user.urls')),
     path('contact/', include('contact.urls'))
 ]
 
 if settings.DEBUG:
-    urlpatterns += urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

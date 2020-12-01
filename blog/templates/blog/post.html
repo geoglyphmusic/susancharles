@@ -1,7 +1,0 @@
-{% extends 'home/base.html' %}
-{% block content %}
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.date_published }}</p>
-    <p class="pb-4">{{ post.content|safe }}</p>
-    <button type="button" name="button"><a href="{% url 'blog' %}">Back to Blog</a></button>
-{% endblock content %}
