@@ -1,0 +1,9 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+{% for service in service_list %}
+<h1>{{ service.title }}</h1>
+{{ service.content|safe }}
+{% endfor %}
+
+{% endblock content %}

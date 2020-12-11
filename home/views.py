@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Homepage
+from articles.models import Article
 
 def home(request):
     context = {
         'title': 'home',
+        'homepage_list': Homepage.objects.filter(active=True),
+        'article_list': Article.objects.order_by("-date_published")[:3]
     }
     return render(request, 'home/home.html', context)
 

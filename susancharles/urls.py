@@ -23,9 +23,14 @@ urlpatterns = [
     path('ckeditor', include('ckeditor_uploader.urls')),
     path('', include('home.urls')),
     path('articles/', include('articles.urls')),
+    path('services/', include('services.urls')),
     path('user/', include('user.urls')),
     path('contact/', include('contact.urls'))
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+admin.site.site_header = 'Corrichie Ancestry'
+admin.site.site_title = 'Corrichie Ancestry'
+admin.site.index_title = "Welcome to the Corrichie Ancestry admin page."

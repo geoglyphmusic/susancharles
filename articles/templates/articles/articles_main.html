@@ -1,18 +1,27 @@
 {% extends 'home/base.html' %}
 {% block content %}
 
-  <div class="row pt-4">
-    <div class="col-sm-8 pb-4">
-      <h1 class="pb-4">Articles</h1>
+  <div class="row">
+    <div class="col-sm-8 pb-4 border-right">
+      {% if selected_tag %}
+      <h1 class="pb-4 border-bottom">Articles about {{ selected_tag }}</h1>
+      {% endif %}
       {% for article in articles %}
-        <h3><a href="{% url 'article' article_slug=article.slug %}">{{ article.title }}</a></h3>
-        <p>{{ article.date_published }}</p>
+        <h3 class="pt-3"><a>{{ article.title }}</a></h3>
+        <p>{{ article.date_published|date:"d M Y" }}</p>
+        <p class="text-justify pr-3">{{ article.abstract }}</p>
+        <a href="{% url 'article' article_slug=article.slug %}" class="btn btn-primary mt-2 mb-2">Read Article</a>
+        <hr>
       {% endfor %}
     </div>
     <div class="col-sm-4">
       <h3 class="pb-2">Articles About:</h3>
       {% for tag in tags %}
-        <a class="btn btn-info" href="{% url 'tag' selected_tag=tag %}">{{ tag }}</a>
+        {% if tag.name == selected_tag %}
+          <a class="btn btn-outline-info mb-2" href="{% url 'tag' selected_tag=tag %}">{{ tag }}</a>
+        {% else %}
+          <a class="btn btn-info mb-2" href="{% url 'tag' selected_tag=tag %}">{{ tag }}</a>
+        {% endif %}
       {% endfor %}
     </div>
   </div>

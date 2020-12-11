@@ -1,0 +1,20 @@
+* {
+  font-family: 'Noto Serif', serif;
+  color: #666666;
+}
+
+a.btn-primary {
+  background-color: #6c70bc;
+  border-color: #6c70bc;
+}
+
+input.btn-primary {
+  background-color: #6c70bc;
+  border-color: #6c70bc;
+}
+
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .nav-item:hover .nav-link {
+    color: #6c70bc;
+}

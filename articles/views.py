@@ -22,4 +22,4 @@ def tag_view(request, selected_tag):
 		'tags': Tag.objects.all(),
         'articles': Article.objects.filter(tags__name__in=[selected_tag])
     }
-    return render(request, 'articles/tag.html', context)
+    return render(request, 'articles/articles_main.html', context)
