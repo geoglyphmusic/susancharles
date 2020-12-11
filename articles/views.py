@@ -6,7 +6,7 @@ from taggit.models import Tag
 def articles_main_view(request):
 	context = {
 		'articles': Article.objects.all(),
-		'tags': Tag.objects.all()
+		'tags': Article.tags.most_common()
 	}
 	return render(request, 'articles/articles_main.html', context)
 
