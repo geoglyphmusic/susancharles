@@ -1,0 +1,11 @@
+{% extends 'home/base.html' %}
+{% block content %}
+    <h2>{{ person.name }}</h2>
+    <p>{{ person.date_published }}</p>
+    <!-- 'all' is needed below to turn taggable object into list -->
+    {% for tag in person.tags.all %}
+      <a class="btn btn-info" href="{% url 'tag' selected_tag=tag %}">{{ tag }}</a>
+    {% endfor %}
+    <p class="pb-4">{{ person.content|safe }}</p>
+    <a class="btn btn-primary mt-4" href="{% url 'articles' %}">Back to People</a></button>
+{% endblock content %}

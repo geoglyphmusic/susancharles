@@ -15,7 +15,7 @@
       {% endfor %}
     </div>
     <div class="col-sm-4">
-      <h3 class="pb-2">Articles About:</h3>
+      <h3 class="pb-2">Tags:</h3>
       {% for tag in tags %}
         {% if tag.name == selected_tag %}
           <a class="btn btn-outline-info mb-2" href="{% url 'tag' selected_tag=tag %}">{{ tag }}</a>

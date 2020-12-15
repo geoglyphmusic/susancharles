@@ -1,0 +1,29 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-8 pb-4 border-right">
+    {% if selected_tag %}
+    <h1 class="pb-4 border-bottom">Tag: {{ selected_tag }}</h1>
+    {% endif %}
+    {% for person in people %}
+      <h3 class="pt-3"><a>{{ person.name }} ({{ person.year_of_birth }}-{{ person.year_of_death }})</a></h3>
+      <p>{{ person.date_published|date:"d M Y" }}</p>
+      <p class="text-justify pr-3">{{ person.abstract }}</p>
+      <a href="{% url 'person' person_slug=person.slug %}" class="btn btn-primary mt-2 mb-2">Read Article</a>
+      <hr>
+    {% endfor %}
+  </div>
+  <div class="col-sm-4">
+    <h3 class="pb-2">Tags:</h3>
+    {% for tag in tags %}
+      {% if tag.name == selected_tag %}
+        <a class="btn btn-outline-info mb-2" href="{% url 'tag' selected_tag=tag %}">{{ tag }}</a>
+      {% else %}
+        <a class="btn btn-info mb-2" href="{% url 'tag' selected_tag=tag %}">{{ tag }}</a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}

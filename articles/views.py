@@ -19,7 +19,7 @@ def article_view(request, article_slug):
 def tag_view(request, selected_tag):
     context = {
         'selected_tag': selected_tag,
-		'tags': Tag.objects.all(),
+		'tags': Article.tags.most_common(),
         'articles': Article.objects.filter(tags__name__in=[selected_tag])
     }
     return render(request, 'articles/articles_main.html', context)
