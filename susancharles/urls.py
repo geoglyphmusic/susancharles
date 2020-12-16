@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import handler404, handler500
+
+from home import views as home_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +27,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('articles/', include('articles.urls')),
     path('people/', include('people.urls')),
+    path('tag/', include('tags.urls')),
     path('services/', include('services.urls')),
     path('user/', include('user.urls')),
     path('contact/', include('contact.urls'))
@@ -31,6 +35,9 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = home_views.error_404
+handler500 = home_views.error_500
 
 admin.site.site_header = 'Corrichie Ancestry'
 admin.site.site_title = 'Corrichie Ancestry'

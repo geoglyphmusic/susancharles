@@ -9,12 +9,20 @@
     {% endfor %}
   </div>
   <div class="col-md-4 border-left">
-    <div class="border-bottom pb-4">
+    <div class="pb-4">
       <h2 class="pb-3 border-bottom">Latest Articles</h2>
       {% for article in article_list %}
       <h3 class="pt-3">{{ article.title }}</h3>
       <p>{{ article.date_published|date:"d M Y" }}</p>
       <a href="{% url 'article' article_slug=article.slug %}" class="btn btn-primary mt-2 mb-2">Read Article</a>
+      {% endfor %}
+    </div>
+    <div class="border-bottom pb-4">
+      <h2 class="pb-3 mt-5 border-bottom">Latest People</h2>
+      {% for person in person_list %}
+      <h3 class="pt-3">{{ person.name }}</h3>
+      <p>{{ person.date_published|date:"d M Y" }}</p>
+      <a href="{% url 'person' person_slug=person.slug %}" class="btn btn-primary mt-2 mb-2">Read Article</a>
       {% endfor %}
     </div>
   </div>

@@ -5,7 +5,7 @@ from taggit.models import Tag
 def people_main(request):
     context = {
         'people': Person.objects.all(),
-        'tags': Person.tags.most_common()
+        'tags': Tag.objects.all()
     }
     return render(request, 'people/people_main.html', context)
 

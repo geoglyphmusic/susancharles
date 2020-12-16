@@ -1,0 +1,88 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+  <div class="row">
+
+    <div class="col-sm-8 pb-4 border-right">
+
+      <h1 class="pb-4">Tag: {{ selected_tag }}</h1>
+
+      <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link" id="articles-tab" data-toggle="tab" href="#articles" role="tab" aria-controls="articles"
+            aria-selected="false">Articles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="people-tab" data-toggle="tab" href="#people" role="tab" aria-controls="people"
+            aria-selected="false">People</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" id="both-tab" data-toggle="tab" href="#both" role="tab" aria-controls="both"
+            aria-selected="true">Both</a>
+        </li>
+      </ul>
+
+
+      <div class="tab-content">
+        <div class="tab-pane fade" id="articles">
+          {% if article_list %}
+            {% for article in article_list %}
+              <h3 class="pt-3"><a>{{ article.title }}</a></h3>
+              <p>{{ article.date_published|date:"d M Y" }}</p>
+              <p class="text-justify pr-3">{{ article.abstract }}</p>
+              <a href="{% url 'article' article_slug=article.slug %}" class="btn btn-primary mt-2 mb-2">Read Article</a>
+              <hr>
+            {% endfor %}
+          {% else %}
+            <p  class="pt-4">No articles found.</p>
+          {% endif %}
+        </div>
+        <div class="tab-pane fade" id="people">
+          {% if person_list %}
+            {% for person in person_list %}
+              <h3 class="pt-3"><a>{{ person.name }}</a></h3>
+              <p>{{ person.date_published|date:"d M Y" }}</p>
+              <p class="text-justify pr-3">{{ person.abstract }}</p>
+              <a href="{% url 'person' person_slug=person.slug %}" class="btn btn-primary mt-2 mb-2">Read Article</a>
+              <hr>
+            {% endfor %}
+          {% else %}
+            <p class="pt-4">No people found.</p>
+          {% endif %}
+        </div>
+        <div class="tab-pane fade show active" id="both">
+          {% for item in combined_list %}
+            {% if item.title %}
+              <h3 class="pt-3"><a>{{ item.title }}</a></h3>
+              <p>{{ item.date_published|date:"d M Y" }}</p>
+              <p class="text-justify pr-3">{{ item.abstract }}</p>
+              <a href="{% url 'article' article_slug=item.slug %}" class="btn btn-primary mt-2 mb-2">Read Article</a>
+              <hr>
+            {% endif %}
+            {% if item.name %}
+              <h3 class="pt-3"><a>{{ item.name }}</a></h3>
+              <p>{{ item.date_published|date:"d M Y" }}</p>
+              <p class="text-justify pr-3">{{ item.abstract }}</p>
+              <a href="{% url 'person' person_slug=item.slug %}" class="btn btn-primary mt-2 mb-2">Read Article</a>
+              <hr>
+            {% endif %}
+            <hr>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-sm-4">
+      <h3 class="pb-2">Tags:</h3>
+      {% for tag in tags %}
+        {% if tag.name == selected_tag %}
+          <a class="btn btn-outline-info mb-2" href="{% url 'tag' selected_tag=tag %}">{{ tag }}</a>
+        {% else %}
+          <a class="btn btn-info mb-2" href="{% url 'tag' selected_tag=tag %}">{{ tag }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+{% endblock content %}

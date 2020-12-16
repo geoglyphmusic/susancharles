@@ -41,7 +41,7 @@
             <a class="nav-link {% active_link 'user' %}" href="{% url 'account' %}">{{ request.user }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {% active_link 'team' %}" href="{% url 'logout' %}">Logout</a>
+            <a class="nav-link {% active_link 'logout' %}" href="{% url 'logout' %}">Logout</a>
           </li>
           {% else %}
           <li class="nav-item">
