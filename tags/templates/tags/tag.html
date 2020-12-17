@@ -1,4 +1,5 @@
 {% extends 'home/base.html' %}
+{% block title %} - Tag: {{ selected_tag }}{% endblock title %}
 {% block content %}
 
   <div class="row">
@@ -30,7 +31,7 @@
               <h3 class="pt-3"><a>{{ article.title }}</a></h3>
               <p>{{ article.date_published|date:"d M Y" }}</p>
               <p class="text-justify pr-3">{{ article.abstract }}</p>
-              <a href="{% url 'article' article_slug=article.slug %}" class="btn btn-primary mt-2 mb-2">Read Article</a>
+              <a href="{% url 'article' article_slug=article.slug %}" class="btn btn-heather mt-2 mb-2">Read Article</a>
               <hr>
             {% endfor %}
           {% else %}
@@ -43,7 +44,7 @@
               <h3 class="pt-3"><a>{{ person.name }}</a></h3>
               <p>{{ person.date_published|date:"d M Y" }}</p>
               <p class="text-justify pr-3">{{ person.abstract }}</p>
-              <a href="{% url 'person' person_slug=person.slug %}" class="btn btn-primary mt-2 mb-2">Read Article</a>
+              <a href="{% url 'person' person_slug=person.slug %}" class="btn btn-heather mt-2 mb-2">Read Article</a>
               <hr>
             {% endfor %}
           {% else %}
@@ -56,17 +57,16 @@
               <h3 class="pt-3"><a>{{ item.title }}</a></h3>
               <p>{{ item.date_published|date:"d M Y" }}</p>
               <p class="text-justify pr-3">{{ item.abstract }}</p>
-              <a href="{% url 'article' article_slug=item.slug %}" class="btn btn-primary mt-2 mb-2">Read Article</a>
+              <a href="{% url 'article' article_slug=item.slug %}" class="btn btn-heather mt-2 mb-2">Read Article</a>
               <hr>
             {% endif %}
             {% if item.name %}
               <h3 class="pt-3"><a>{{ item.name }}</a></h3>
               <p>{{ item.date_published|date:"d M Y" }}</p>
               <p class="text-justify pr-3">{{ item.abstract }}</p>
-              <a href="{% url 'person' person_slug=item.slug %}" class="btn btn-primary mt-2 mb-2">Read Article</a>
+              <a href="{% url 'person' person_slug=item.slug %}" class="btn btn-heather mt-2 mb-2">Read Article</a>
               <hr>
             {% endif %}
-            <hr>
           {% endfor %}
         </div>
       </div>

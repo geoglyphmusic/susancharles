@@ -3,16 +3,32 @@
   color: #666666;
 }
 
-a.btn-primary {
+.toplogo {
+    max-height : 100px;
+    max-width: 30%;
+    margin-top: 5px;
+}
+
+.btn-heather {
+  color: white;
   background-color: #6c70bc;
   border-color: #6c70bc;
 }
 
-input.btn-primary {
-  background-color: #6c70bc;
-  border-color: #6c70bc;
+.btn-heather:hover, .btn-heather:focus, .btn-heather:active, .btn-heather:active:focus, .btn-heather.active {
+  color: white;
+  background-color: #4c4eb5;
+  border-color: #4c4eb5;
+  box-shadow: none;
 }
 
+a {
+  color: #6c70bc;
+}
+
+a:hover {
+  color: #4c4eb5;
+}
 
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .nav-item:hover .nav-link {

@@ -1,4 +1,5 @@
 {% extends 'home/base.html' %}
+{% block title %} - People: {{ person.name }}{% endblock title %}
 {% block content %}
     <h2>{{ person.name }}</h2>
     <p>{{ person.date_published }}</p>
@@ -7,5 +8,5 @@
       <a class="btn btn-info" href="{% url 'tag' selected_tag=tag %}">{{ tag }}</a>
     {% endfor %}
     <p class="pb-4">{{ person.content|safe }}</p>
-    <a class="btn btn-primary mt-4" href="{% url 'articles' %}">Back to People</a></button>
+    <a class="btn btn-heather mt-4" href="{% url 'articles' %}">Back to People</a></button>
 {% endblock content %}

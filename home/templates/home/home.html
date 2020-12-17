@@ -1,5 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static %}
+{% block title %} - Home{% endblock title %}
 {% block content %}
 
 <div class="row">
@@ -14,7 +15,7 @@
       {% for article in article_list %}
       <h3 class="pt-3">{{ article.title }}</h3>
       <p>{{ article.date_published|date:"d M Y" }}</p>
-      <a href="{% url 'article' article_slug=article.slug %}" class="btn btn-primary mt-2 mb-2">Read Article</a>
+      <a href="{% url 'article' article_slug=article.slug %}" class="btn btn-heather mt-2 mb-2">Read Article</a>
       {% endfor %}
     </div>
     <div class="border-bottom pb-4">
@@ -22,7 +23,7 @@
       {% for person in person_list %}
       <h3 class="pt-3">{{ person.name }}</h3>
       <p>{{ person.date_published|date:"d M Y" }}</p>
-      <a href="{% url 'person' person_slug=person.slug %}" class="btn btn-primary mt-2 mb-2">Read Article</a>
+      <a href="{% url 'person' person_slug=person.slug %}" class="btn btn-heather mt-2 mb-2">Read Article</a>
       {% endfor %}
     </div>
   </div>
